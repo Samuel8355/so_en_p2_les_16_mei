@@ -3,41 +3,41 @@ from verkiezing import Kandidaat, Stem, Kiezer, toon_resultaten
 class DecaanKandidaat(Kandidaat):
     def __init__(self, naam, opleiding):
         super().__init__(naam)
-        self._opleiding = opleiding
+        self.__opleiding = opleiding
 
     @property
     def opleiding(self):
-        return self._opleiding
+        return self.__opleiding
 
     def __str__(self):
-        return f"{self._naam} (Decaan: {self._opleiding})"
+        return f"{self._naam} (Decaan: {self.__opleiding})"
     
 class DecaanStem(Stem):
     def __init__(self, kandidaat, opleiding):
         super().__init__(kandidaat)
-        self._opleiding = opleiding
+        self.__opleiding = opleiding
 
     @property
     def opleiding(self):
-        return self._opleiding
+        return self.__opleiding
 
     def __str__(self):
-        return f"Stem op {self._kandidaat} (Opleiding: {self._opleiding})"
+        return f"Stem op {self._kandidaat} (Opleiding: {self.__opleiding})"
     
 class DecaanKiezer(Kiezer):
     def __init__(self, naam, opleiding):
         super().__init__(naam)
-        self._opleiding = opleiding
+        self.__opleiding = opleiding
 
     @property
     def opleiding(self):
-        return self._opleiding
+        return self.__opleiding
 
     def stem(self, kandidaat):
-        if kandidaat.opleiding == self._opleiding:
-            stem = DecaanStem(kandidaat, self._opleiding)
+        if kandidaat.opleiding == self.__opleiding:
+            stem = DecaanStem(kandidaat, self.__opleiding)
             kandidaat.geef_stem(stem)
-            print(f"{self._naam} heeft gestemd op {kandidaat} ({self._opleiding})")
+            print(f"{self._naam} heeft gestemd op {kandidaat} ({self.__opleiding})")
         else:
             print(f"{self._naam} kan niet stemmen op {kandidaat} ({kandidaat.opleiding})")
 
