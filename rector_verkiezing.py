@@ -3,26 +3,26 @@ from verkiezing import Kandidaat, Stem, Kiezer, toon_resultaten
 class RectorKandidaat(Kandidaat):
     def __init__(self, naam, faculteit):
         super().__init__(naam)
-        self._faculteit = faculteit
+        self.__faculteit = faculteit
 
     @property
     def faculteit(self):
-        return self._faculteit
+        return self.__faculteit
 
     def __str__(self):
-        return f"{self._naam} (Rector: {self._faculteit})"
+        return f"{self._naam} (Rector: {self.__faculteit})"
     
 class RectorStem(Stem):
     def __init__(self, kandidaat, faculteit):
         super().__init__(kandidaat)
-        self._faculteit = faculteit
+        self.__faculteit = faculteit
 
     @property
     def faculteit(self):
-        return self._faculteit
+        return self.__faculteit
 
     def __str__(self):
-        return f"Stem op {self._kandidaat} (Faculteit: {self._faculteit})"
+        return f"Stem op {self._kandidaat} (Faculteit: {self.__faculteit})"
 
 # Test scenario
 if __name__ == "__main__":
