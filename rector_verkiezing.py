@@ -1,4 +1,4 @@
-from verkiezing import Kandidaat, Stem, Kiezer, Verkiezing
+from verkiezing import Kandidaat, Stem, Kiezer, toon_resultaten
 
 class RectorKandidaat(Kandidaat):
     def __init__(self, naam, faculteit):
@@ -26,17 +26,12 @@ class RectorStem(Stem):
 
 # Test scenario
 if __name__ == "__main__":
-    # Create een rector verkiezing
-    verkiezing = Verkiezing("Rector Verkiezing 2025")
-
     # Maak kandidaten aan
-    kandidaat1 = RectorKandidaat("Prof. Dr. De Vos", "Wetenschappen")
-    kandidaat2 = RectorKandidaat("Prof. Dr. Janssens", "Letteren")
-    kandidaat3 = RectorKandidaat("Prof. Dr. Peeters", "Rechten")
-
-    # Voeg kandidaten toe aan de verkiezing
-    for kandidaat in [kandidaat1, kandidaat2, kandidaat3]:
-        verkiezing.voeg_kandidaat_toe(kandidaat)
+    kandidaten = [
+        RectorKandidaat("Prof. Dr. De Vos", "Wetenschappen"),
+        RectorKandidaat("Prof. Dr. Janssens", "Letteren"),
+        RectorKandidaat("Prof. Dr. Peeters", "Rechten")
+    ]
 
     # Maak kiezers aan
     kiezers = [
@@ -47,16 +42,12 @@ if __name__ == "__main__":
         Kiezer("Dr. Willems")
     ]
 
-    # Voeg kiezers toe aan de verkiezing
-    for kiezer in kiezers:
-        verkiezing.voeg_kiezer_toe(kiezer)
-
     # Laat kiezers stemmen
-    kiezers[0].stem(kandidaat1)
-    kiezers[1].stem(kandidaat2)
-    kiezers[2].stem(kandidaat1)
-    kiezers[3].stem(kandidaat3)
-    kiezers[4].stem(kandidaat1)
+    kiezers[0].stem(kandidaten[0])  # Stemt op De Vos
+    kiezers[1].stem(kandidaten[1])  # Stemt op Janssens
+    kiezers[2].stem(kandidaten[0])  # Stemt op De Vos
+    kiezers[3].stem(kandidaten[2])  # Stemt op Peeters
+    kiezers[4].stem(kandidaten[0])  # Stemt op De Vos
 
     # Toon de resultaten
-    verkiezing.toon_resultaten()
+    toon_resultaten(kandidaten)
