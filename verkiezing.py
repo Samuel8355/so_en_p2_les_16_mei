@@ -1,4 +1,6 @@
-class Kandidaat:
+from abc import ABC, abstractmethod
+
+class Kandidaat(ABC):
     def __init__(self, naam):
         self._naam = naam
         self._stemmen = []
@@ -14,8 +16,9 @@ class Kandidaat:
     def geef_stem(self, stem):
         self._stemmen.append(stem)
 
+    @abstractmethod
     def __str__(self):
-        return f"{self._naam}"
+        pass
     
 class Stem:
     def __init__(self, kandidaat):
@@ -49,26 +52,8 @@ class Kiezer:
         self._heeft_gestemd = True
         print(f"{self._naam} heeft gestemd op {kandidaat}")
 
-class Verkiezing:
-    def __init__(self, naam):
-        self._naam = naam
-        self._kandidaten = []
-        self._kiezers = []
-    
-    @property
-    def naam(self):
-        return self._naam
-    
-    def voeg_kandidaat_toe(self, kandidaat):
-        if kandidaat not in self._kandidaten:
-            self._kandidaten.append(kandidaat)
-    
-    def voeg_kiezer_toe(self, kiezer):
-        if kiezer not in self._kiezers:
-            self._kiezers.append(kiezer)
-    
-    def toon_resultaten(self):
-        print(f"\nResultaten van {self._naam}:")
-        gesorteerde_kandidaten = sorted(self._kandidaten, key=lambda k: k.aantal_stemmen, reverse=True)
-        for kandidaat in gesorteerde_kandidaten:
-            print(f"{kandidaat}: {kandidaat.aantal_stemmen} stemmen")
+def toon_resultaten(kandidaten):
+    print("\nVerkiezingsresultaten:")
+    gesorteerde_kandidaten = sorted(kandidaten, key=lambda k: k.aantal_stemmen, reverse=True)
+    for kandidaat in gesorteerde_kandidaten:
+        print(f"{kandidaat}: {kandidaat.aantal_stemmen} stemmen")
