@@ -1,4 +1,4 @@
-from verkiezing import Kandidaat, Stem, Kiezer, Verkiezing
+from verkiezing import Kandidaat, Stem, Kiezer, toon_resultaten
 
 class DecaanKandidaat(Kandidaat):
     def __init__(self, naam, opleiding):
@@ -41,19 +41,14 @@ class DecaanKiezer(Kiezer):
         else:
             print(f"{self._naam} kan niet stemmen op {kandidaat} ({kandidaat.opleiding})")
 
-# Test scenario
+# Testscenario
 if __name__ == "__main__":
-    # Create een decaan verkiezing
-    verkiezing = Verkiezing("Decaan Verkiezing 2025")
-
     # Maak kandidaten aan
-    kandidaat1 = DecaanKandidaat("Dr. De Vos", "Informatica")
-    kandidaat2 = DecaanKandidaat("Dr. Janssens", "Wiskunde")
-    kandidaat3 = DecaanKandidaat("Dr. Peeters", "Informatica")
-
-    # Voeg kandidaten toe aan de verkiezing
-    for kandidaat in [kandidaat1, kandidaat2, kandidaat3]:
-        verkiezing.voeg_kandidaat_toe(kandidaat)
+    kandidaten = [
+        DecaanKandidaat("Dr. De Vos", "Informatica"),
+        DecaanKandidaat("Dr. Janssens", "Wiskunde"),
+        DecaanKandidaat("Dr. Peeters", "Informatica")
+    ]
 
     # Maak kiezers aan
     kiezers = [
@@ -64,16 +59,12 @@ if __name__ == "__main__":
         DecaanKiezer("Prof. Willems", "Informatica")
     ]
 
-    # Voeg kiezers toe aan de verkiezing
-    for kiezer in kiezers:
-        verkiezing.voeg_kiezer_toe(kiezer)
-
     # Laat kiezers stemmen
-    kiezers[0].stem(kandidaat1)  # Kan stemmen (Informatica)
-    kiezers[1].stem(kandidaat1)  # Kan niet stemmen (Wiskunde vs Informatica)
-    kiezers[2].stem(kandidaat3)  # Kan stemmen (Informatica)
-    kiezers[3].stem(kandidaat2)  # Kan stemmen (Wiskunde)
-    kiezers[4].stem(kandidaat1)  # Kan stemmen (Informatica)
+    kiezers[0].stem(kandidaten[0])  # Kan stemmen (Informatica)
+    kiezers[1].stem(kandidaten[0])  # Kan niet stemmen (Wiskunde vs Informatica)
+    kiezers[2].stem(kandidaten[2])  # Kan stemmen (Informatica)
+    kiezers[3].stem(kandidaten[1])  # Kan stemmen (Wiskunde)
+    kiezers[4].stem(kandidaten[0])  # Kan stemmen (Informatica)
 
     # Toon de resultaten
-    verkiezing.toon_resultaten()
+    toon_resultaten(kandidaten)
