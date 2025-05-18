@@ -25,29 +25,28 @@ class RectorStem(Stem):
         return f"Stem op {self._kandidaat} (Faculteit: {self.__faculteit})"
 
 # Test scenario
-if __name__ == "__main__":
-    # Maak kandidaten aan
-    kandidaten = [
-        RectorKandidaat("Prof. Dr. De Vos", "Wetenschappen"),
-        RectorKandidaat("Prof. Dr. Janssens", "Letteren"),
-        RectorKandidaat("Prof. Dr. Peeters", "Rechten")
-    ]
+# Maak kandidaten aan
+kandidaten = [
+    RectorKandidaat("Prof. Dr. De Vos", "Wetenschappen"),
+    RectorKandidaat("Prof. Dr. Janssens", "Letteren"),
+    RectorKandidaat("Prof. Dr. Peeters", "Rechten")
+]
 
-    # Maak kiezers aan
-    kiezers = [
-        Kiezer("Dr. Van den Berg"),
-        Kiezer("Dr. Wouters"),
-        Kiezer("Dr. De Smet"),
-        Kiezer("Dr. Claes"),
-        Kiezer("Dr. Willems")
-    ]
+# Maak kiezers aan
+kiezers = [
+    Kiezer("Dr. Van den Berg"),
+    Kiezer("Dr. Wouters"),
+    Kiezer("Dr. De Smet"),
+    Kiezer("Dr. Claes"),
+    Kiezer("Dr. Willems")
+]
 
-    # Laat kiezers stemmen
-    kiezers[0].stem(kandidaten[0])  # Stemt op De Vos
-    kiezers[1].stem(kandidaten[1])  # Stemt op Janssens
-    kiezers[2].stem(kandidaten[0])  # Stemt op De Vos
-    kiezers[3].stem(kandidaten[2])  # Stemt op Peeters
-    kiezers[4].stem(kandidaten[0])  # Stemt op De Vos
+# Laat kiezers stemmen
+kiezers[0].stem(kandidaten[0])  # Stemt op De Vos
+kiezers[1].stem(kandidaten[1])  # Stemt op Janssens
+kiezers[2].stem(kandidaten[0])  # Stemt op De Vos
+kiezers[3].stem(kandidaten[2])  # Stemt op Peeters
+kiezers[4].stem(kandidaten[0])  # Stemt op De Vos
 
-    # Toon de resultaten
-    toon_resultaten(kandidaten)
+# Toon de resultaten
+toon_resultaten(kandidaten)
