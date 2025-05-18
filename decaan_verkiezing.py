@@ -42,29 +42,29 @@ class DecaanKiezer(Kiezer):
             print(f"{self._naam} kan niet stemmen op {kandidaat} ({kandidaat.opleiding})")
 
 # Testscenario
-if __name__ == "__main__":
+
     # Maak kandidaten aan
-    kandidaten = [
-        DecaanKandidaat("Dr. De Vos", "Informatica"),
-        DecaanKandidaat("Dr. Janssens", "Wiskunde"),
-        DecaanKandidaat("Dr. Peeters", "Informatica")
-    ]
+kandidaten = [
+    DecaanKandidaat("Dr. De Vos", "Informatica"),
+    DecaanKandidaat("Dr. Janssens", "Wiskunde"),
+    DecaanKandidaat("Dr. Peeters", "Informatica")
+]
 
-    # Maak kiezers aan
-    kiezers = [
-        DecaanKiezer("Prof. Van den Berg", "Informatica"),
-        DecaanKiezer("Prof. Wouters", "Wiskunde"),
-        DecaanKiezer("Prof. De Smet", "Informatica"),
-        DecaanKiezer("Prof. Claes", "Wiskunde"),
-        DecaanKiezer("Prof. Willems", "Informatica")
-    ]
+# Maak kiezers aan
+kiezers = [
+    DecaanKiezer("Prof. Van den Berg", "Informatica"),
+    DecaanKiezer("Prof. Wouters", "Wiskunde"),
+    DecaanKiezer("Prof. De Smet", "Informatica"),
+    DecaanKiezer("Prof. Claes", "Wiskunde"),
+    DecaanKiezer("Prof. Willems", "Informatica")
+]
 
-    # Laat kiezers stemmen
-    kiezers[0].stem(kandidaten[0])  # Kan stemmen (Informatica)
-    kiezers[1].stem(kandidaten[0])  # Kan niet stemmen (Wiskunde vs Informatica)
-    kiezers[2].stem(kandidaten[2])  # Kan stemmen (Informatica)
-    kiezers[3].stem(kandidaten[1])  # Kan stemmen (Wiskunde)
-    kiezers[4].stem(kandidaten[0])  # Kan stemmen (Informatica)
+# Laat kiezers stemmen
+kiezers[0].stem(kandidaten[0])  # Kan stemmen (Informatica)
+kiezers[1].stem(kandidaten[0])  # Kan niet stemmen (Wiskunde vs Informatica)
+kiezers[2].stem(kandidaten[2])  # Kan stemmen (Informatica)
+kiezers[3].stem(kandidaten[1])  # Kan stemmen (Wiskunde)
+kiezers[4].stem(kandidaten[0])  # Kan stemmen (Informatica)
 
-    # Toon de resultaten
-    toon_resultaten(kandidaten)
+# Toon de resultaten
+toon_resultaten(kandidaten)
